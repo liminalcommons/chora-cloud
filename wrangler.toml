@@ -14,13 +14,13 @@ bindings = [
 
 [[migrations]]
 tag = "v1"
-new_classes = ["SyncRoom"]
+new_sqlite_classes = ["SyncRoom"]
 
 # KV namespace for accounts
 [[kv_namespaces]]
 binding = "ACCOUNTS"
-id = "your-kv-namespace-id"
-preview_id = "your-preview-kv-namespace-id"
+id = "609c1e680aba4e8f8cd4dbb8b76d864a"
+preview_id = "0afb4929ade444bb89954b6885d05df6"
 
 # R2 bucket for encrypted blob storage (optional)
 # [[r2_buckets]]
