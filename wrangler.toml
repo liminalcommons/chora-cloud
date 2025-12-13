@@ -1,0 +1,34 @@
+# chora-cloud: Sync service for chora workspaces
+# Deploy with: wrangler deploy
+
+name = "chora-cloud"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Durable Objects for WebSocket sync coordination
+[durable_objects]
+bindings = [
+  { name = "SYNC_ROOM", class_name = "SyncRoom" }
+]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["SyncRoom"]
+
+# KV namespace for accounts
+[[kv_namespaces]]
+binding = "ACCOUNTS"
+id = "your-kv-namespace-id"
+preview_id = "your-preview-kv-namespace-id"
+
+# R2 bucket for encrypted blob storage (optional)
+# [[r2_buckets]]
+# binding = "BLOBS"
+# bucket_name = "chora-sync"
+
+# Environment variables (set via wrangler secret)
+# SYNC_SECRET - shared secret for API authentication
+
+[vars]
+ENVIRONMENT = "production"
